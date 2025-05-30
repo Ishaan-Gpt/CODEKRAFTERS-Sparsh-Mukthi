@@ -167,7 +167,7 @@ Alternatively, you can download the model manually from https://alphacephei.com/
   brew install --cask xquartz
   ```
 
-### Starting the Application
+### 6. Starting the Application
 
 Sparsh Mukthi's main interface is a Flask web application that provides access to all features:
 
