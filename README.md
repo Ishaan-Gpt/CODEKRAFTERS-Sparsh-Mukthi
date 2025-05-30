@@ -3,20 +3,11 @@
   
   <div align="center" style="margin: 20px 0;">
     <a href="https://sparsh-mukthi.vercel.app/" target="_blank">
-      <img src="https://img.shields.io/badge/🚀-Live%20Demo-4CAF50?style=for-the-badge&logo=vercel&logoColor=white&labelColor=1a1a2e" alt="Live Demo" />
       <img src="https://img.shields.io/badge/⚡-Try%20Now!-FF6B6B?style=for-the-badge&logo=vercel&logoColor=white&labelColor=1a1a2e" alt="Try Now" />
     </a>
     <p style="margin: 10px 0; font-size: 0.9em; color: #a8a8a8;">
       <i class="fas fa-external-link-alt"></i> Experience the future of touchless interaction
     </p>
-    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
-      <a href="#%EF%B8%8F-getting-started" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/📖-Documentation-6c63ff?style=flat-square" alt="Documentation" />
-      </a>
-      <a href="#-adaptive-ai-in-action" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/✨-Features-6c63ff?style=flat-square" alt="Features" />
-      </a>
-    </div>
   </div>
   
   <img src="https://i.ibb.co/217zjLmn/temp.webp" alt="Sparsh Mukthi Logo" width="200"/>
