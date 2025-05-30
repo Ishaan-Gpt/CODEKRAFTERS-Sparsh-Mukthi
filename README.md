@@ -13,6 +13,7 @@
   <img src="https://i.ibb.co/217zjLmn/temp.webp" alt="Sparsh Mukthi Logo" width="200"/>
   
   <p><i>Touchless Control System for Education, Healthcare, and VR Gaming</i></p>
+  [demo](https://sparsh-mukthi.vercel.app/)
   <p><b>Cross-Platform Solution for Windows, macOS, and Linux</b></p>
 </div>
 
