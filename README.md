@@ -6,6 +6,13 @@
   <p><b>Cross-Platform Solution for Windows, macOS, and Linux</b></p>
 </div>
 
+---
+
+## 🚀 Live Demo
+[Try the Website Here](https://sparsh-mukthi.vercel.app/)
+
+---
+
 ## 🌟 Overview
 
 Sparsh Mukthi is a comprehensive gesture recognition system designed for three key domains: Education, Healthcare, and VR Gaming. Built with modern computer vision technologies, it provides touchless interaction solutions particularly valuable in scenarios requiring hygiene (healthcare), immersive learning (education), and natural VR control (gaming).
