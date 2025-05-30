@@ -1,9 +1,17 @@
-# Sparsh Mukthi - Advanced Gesture Control System
+# Sparsh Mukthi - Advanced Gesture & Voice Control System
 
 <div align="center">
   <img src="https://i.ibb.co/217zjLmn/temp.webp" alt="Sparsh Mukthi Logo" width="200"/>
   <p><i>Touchless Control System for Education, Healthcare, and VR Gaming</i></p>
+  <p><b>Cross-Platform Solution for Windows, macOS, and Linux</b></p>
 </div>
+
+---
+
+## 🚀 Live Demo
+[Try the Website Here](https://sparsh-mukthi.vercel.app/)
+
+---
 
 ## 🌟 Overview
 
@@ -26,12 +34,14 @@ Sparsh Mukthi is a comprehensive gesture recognition system designed for three k
   - Smooth motion tracking
 
 - **Voice Integration**:
-  - Natural language commands
-  - Voice-gesture hybrid control
-  - Multi-language support
-  - Custom voice command mapping
-  - Noise-resistant recognition
-  - Real-time voice feedback
+  - Dual-mode voice control system:
+    - **Command Mode**: Execute keyboard commands by voice
+    - **Typing Mode**: Transcribe speech to text at cursor position
+  - Natural language commands with customizable variants
+  - Voice-gesture hybrid control for hands-free operation
+  - Custom voice command mapping through web interface
+  - Noise-resistant recognition using Vosk speech recognition
+  - Real-time voice feedback and status indicators
 
 - **Custom AI Gestures (Main Application)**:
   - Train personalized gestures
@@ -70,7 +80,8 @@ Sparsh Mukthi is a comprehensive gesture recognition system designed for three k
 - Python 3.8 or higher
 - Webcam or depth camera
 - Git (for cloning)
-- Windows/Linux/MacOS
+- Windows/Linux/macOS
+- Microphone (for voice control features)
 - VR headset (optional, for VR features)
 
 ### Installation
@@ -87,87 +98,246 @@ cd CODEKRAFTERS-Sparsh-Mukthi
 python -m venv venv
 venv\Scripts\activate
 
-# Linux/MacOS
+# Linux/macOS
 python3 -m venv venv
 source venv/bin/activate
 ```
 
 3. Install dependencies:
 ```bash
+# Windows
 pip install -r requirements.txt
+# Install voice recognition dependencies (not included in requirements.txt)
+pip install vosk sounddevice pyttsx3 keyboard
+
+# Linux
+pip install -r requirements.txt
+# Install voice recognition dependencies
+pip install vosk sounddevice pyttsx3 keyboard
+# For Linux, also install these system dependencies:
+sudo apt-get update
+sudo apt-get install -y python3-opencv python3-tk python3-dev portaudio19-dev ffmpeg
+
+# macOS
+pip install -r requirements.txt
+# Install voice recognition dependencies
+pip install vosk sounddevice pyttsx3 keyboard
+# For macOS, install system dependencies via Homebrew:
+brew install portaudio ffmpeg
 ```
 
-### Component-Specific Setup
-
-1. **Education & Healthcare Mode**:
+4. Download the Vosk speech recognition model:
 ```bash
-python Main-flow-gesture/edu-hcare.py
-```
-- Calibrate camera position
-- Set sterile interaction zone
-- Configure gesture sensitivity
+# Windows
+python Voice-auto/download_vosk_model.py
 
-2. **VR & Gaming Control**:
-```bash
-python Main-flow-gesture/air-contol.py
+# Linux/macOS
+python3 Voice-auto/download_vosk_model.py
 ```
-- Connect VR devices (if applicable)
-- Adjust tracking sensitivity
-- Set game-specific gestures
 
-3. **Voice Control Setup**:
+Alternatively, you can download the model manually from https://alphacephei.com/vosk/models and extract the `vosk-model-small-en-us-0.15` folder to the Voice-auto directory.
+
+5. Platform-specific setup:
+
+#### Windows
+- Ensure Microsoft Visual C++ Redistributable is installed (required for some Python packages)
+- Check camera permissions in Windows Settings → Privacy → Camera
+- Check microphone permissions in Windows Settings → Privacy → Microphone
+
+#### Linux
+- Install X11 dependencies for GUI support:
+  ```bash
+  sudo apt-get install -y libx11-dev libxtst-dev
+  ```
+- Allow webcam access:
+  ```bash
+  sudo usermod -a -G video $USER
+  ```
+- Set up proper audio device permissions:
+  ```bash
+  sudo usermod -a -G audio $USER
+  ```
+
+#### macOS
+- Grant camera permissions when prompted
+- Grant accessibility permissions for controlling mouse/keyboard:
+  System Preferences → Security & Privacy → Privacy → Accessibility
+- Install XQuartz if needed for display:
+  ```bash
+  brew install --cask xquartz
+  ```
+
+### Starting the Application
+
+Sparsh Mukthi's main interface is a Flask web application that provides access to all features:
+
 ```bash
-cd Voice-auto
-# For command-based voice control:
-python final-model.py
-# For real-time transcription:
-python live_transcriber.py
+python app.py
 ```
-- Download Vosk model (vosk-model-small-en-us-0.15)
-- Configure voice commands in commands.json
-- Test microphone input
-- Choose between:
-  - Command mode: Voice-to-action mapping with feedback
-  - Transcription mode: Real-time speech-to-text
+
+This will start the web server at http://127.0.0.1:5000 where you can access all functionality through a unified interface.
+
+### Available Features
+
+1. **Gesture Training & Recognition**
+   - Train custom gestures with your webcam
+   - Map gestures to keyboard commands
+   - Use gestures to control applications
+
+2. **Mouse Controllers**
+   - **Education & Healthcare Mode** (EDU-HCARE): Precise cursor control for educational and medical applications
+   - **Air Controller**: Gaming-optimized controller for FPS and other games
+
+3. **Voice Control System**
+   - **Voice Commands**: Control your computer with voice commands mapped to keyboard shortcuts
+   - **Voice Typing**: Dictate text directly to any text field
+
+4. **Demo Experiences**
+   - **Education Demo**: Try the EDU-HCARE controller with 3D anatomy models
+   - **Gaming Demo**: Experience the Air Controller with a browser-based FPS game
+
+### System Architecture
+
+The application consists of several interconnected components:
+
+- **Main Web Interface** (`app.py`): Flask server providing the UI and controlling all subsystems
+- **Gesture Recognition** (`gesture_data/adaptive-gesture-ai/`): Custom gesture training and recognition
+- **Mouse Controllers** (`Main-flow-gesture/`): 
+  - `edu-hcare.py`: Precision mouse control for education/medical use
+  - `air-controller.py`: Specialized controller for gaming
+- **Voice System** (`Voice-auto/`): Voice command and dictation capabilities
+
+#### Voice Command Mode
+- Speak commands to execute keyboard actions (e.g., "left", "right", "up", "down")
+- Commands are processed when cursor is not in a text field
+- Customizable command variants in commands.json
+- Provides audio feedback when commands are recognized
+
+#### Voice Typing Mode
+- Speak naturally to type text where your cursor is positioned
+- Works in any text field or text editor
+- Special commands available:
+  - "delete" or "backspace": Deletes the last character
+  - "enter" or "new line": Creates a new line
+  - "tab" or "indent": Inserts a tab
+  - "space": Inserts a space
+  - "clear all" or "clear": Clears all text
+  - "stop typing" or "exit typing": Stops voice typing mode
 
 4. **Custom AI Gestures**:
 ```bash
 python app.py
 ```
 - Access web interface at http://127.0.0.1:5000
-- Train custom gestures
-- Configure mappings
-
-## 🛠️ Technical Details
-
-### Architecture
 
 ```
 sparsh-mukthi/
-├── app.py                 # Main AI gesture application
-├── requirements.txt       # Project dependencies
-├── Main-flow-gesture/    # Specialized control modules
-│   ├── edu-hcare.py      # Education/Healthcare interface
-│   └── air-contol.py     # VR/Gaming controller
-├── Voice-auto/           # Voice control system
-│   ├── final-model.py    # Voice recognition engine
-│   ├── commands.json     # Voice command mappings
-│   └── live_transcriber.py # Real-time transcription
-├── static/               # Web assets
-├── templates/            # Web interface
-├── models/               # AI models
-├── gesture_data/         # Training data
-└── gesture_output/       # Recognition output
+├─ app.py                    # Main Flask application with all controller routes
+├─ requirements.txt          # Project dependencies
+├─ Main-flow-gesture/        # Specialized mouse controllers
+│   ├─ edu-hcare.py          # Education/Healthcare precision mouse controller
+│   └─ air-controller.py     # Air gesture controller optimized for gaming
+├─ Voice-auto/              # Voice control system
+│   ├─ final-model.py        # Voice command recognition module
+│   ├─ commands.json         # Voice command mappings configuration
+│   └─ live_transcriber.py   # Real-time speech-to-text transcription
+├─ gesture_data/            # Gesture recognition system
+│   └─ adaptive-gesture-ai/  # Custom gesture training and prediction
+│       ├─ collect_gestures.py # Gesture training module
+│       ├─ predict_live.py     # Real-time gesture recognition
+│       ├─ custom_gestures.json # Trained gesture database
+│       └─ key_mappings.json   # Gesture-to-keyboard mapping
+├─ static/                  # Web interface assets
+├─ templates/               # HTML templates for web interface
+└─ logs/                    # Application logs
 ```
+
+### Core Components
+
+1. **Main Application (`app.py`)**
+   - Flask web server handling all HTTP routes
+   - Process management for all controllers
+   - User interface rendering
+   - API endpoints for all functionalities
+
+2. **Mouse Controllers**
+   - **EDU-HCARE** (`edu-hcare.py`): Education and healthcare-oriented mouse controller with precise movements
+   - **Air Controller** (`air-controller.py`): Gaming-optimized controller with special gestures for FPS games
+
+3. **Voice System**
+   - Command mode for executing keyboard shortcuts
+   - Transcription mode for dictation
+   - Vosk-based speech recognition
+
+4. **Gesture Recognition**
+   - Custom gesture training interface
+   - Real-time gesture prediction
+   - Keyboard/mouse action mapping
 
 ### Technologies Used
 
 - **Core**: Python 3.8+, OpenCV 4.8+
-- **AI/ML**: MediaPipe, NumPy, Scikit-learn
+- **AI/ML**: MediaPipe, NumPy, Scikit-learn, Joblib
 - **VR Integration**: PyGame, AutoPy
-- **Voice Processing**: Vosk, sounddevice, pyttsx3
-- **Web Interface**: Flask, SocketIO
+- **Voice Processing**: Vosk, SoundDevice, Pyttsx3, Keyboard
+- **Web Interface**: Flask, Flask-SocketIO
 - **Input Control**: PyAutoGUI, Pynput
+- **System Integration**: psutil (for process management)
+
+## 🔄 Cross-Platform Compatibility
+
+Sparsh Mukthi is designed to work across Windows, macOS, and Linux with minimal configuration differences. Here's how to ensure compatibility on each platform:
+
+### Windows
+
+- **Default Configuration**: Works out of the box on Windows 10/11
+- **Process Management**: Uses Windows-specific process creation flags to avoid command prompt windows
+- **Camera Access**: Automatically detects and uses the default camera
+- **Dependencies**: All required libraries are installed via pip
+
+### macOS
+
+- **Permission Requirements**: Requires explicit permissions for camera, microphone, and accessibility
+- **Dependency Management**: Some libraries (like portaudio) may require Homebrew installation
+- **Process Management**: Uses POSIX-compliant process handling
+- **Keyboard/Mouse Control**: Requires accessibility permissions to be granted in System Preferences
+
+### Linux
+
+- **Distribution Support**: Tested on Ubuntu 20.04+ and Debian-based distributions
+- **System Dependencies**: Requires X11 libraries, OpenCV dependencies, and audio libraries
+- **Device Access**: Requires appropriate user group permissions (video, audio)
+- **Display Management**: May require X11 forwarding configuration in some environments
+
+## 📦 GitHub Deployment
+
+When cloning from GitHub, follow these additional steps to ensure a smooth experience:
+
+1. **Dependencies Verification**:
+   ```bash
+   pip list | grep -E "opencv|numpy|mediapipe|flask|vosk"
+   ```
+   Ensure all critical dependencies are properly installed.
+
+2. **First-Run Configuration**:
+   ```bash
+   python setup_check.py
+   ```
+   This will verify your system compatibility and set up any necessary configurations.
+
+3. **Path Configuration**:
+   Ensure all paths in the application are relative to the project root. If you encounter path-related errors, check:
+   - File paths in app.py
+   - Resource paths in templates/index.html
+   - Model paths in Voice-auto/
+
+4. **Environment Variables**:
+   Create a `.env` file in the project root with any necessary environment variables for your platform:
+   ```
+   # Example .env file
+   CAMERA_ID=0
+   PYTHON_PATH=/usr/local/bin/python3  # Only if custom Python path is needed
+   ```
 
 ### System Requirements
 
@@ -177,11 +347,66 @@ sparsh-mukthi/
   - Camera: 720p 30fps
   - Microphone: Basic built-in
   - Storage: 500MB
+  - Python 3.8 or newer
 
 - **Recommended**:
   - CPU: Quad-core 2.5 GHz
   - RAM: 8GB
   - Camera: 1080p 60fps
+  - Microphone: External with noise cancellation
+  - Storage: 1GB for models and cached data
+  - Python 3.10 or newer
+
+## ⚠️ Troubleshooting
+
+### Common Issues
+
+#### Camera Not Working
+1. **Access denied**: Check camera permissions in your OS settings
+2. **Already in use**: Close other applications that might be using the camera
+3. **Device not found**: Ensure webcam is properly connected and recognized by OS
+4. **Driver issues**: Update camera drivers
+
+#### Mouse Controller Problems
+1. **Missing dependencies**: Run `pip install autopy pyautogui` manually
+2. **Controller not starting**: Check console logs for specific errors
+3. **Permission issues**: Run the application with appropriate permissions
+4. **Platform compatibility**: Use the appropriate commands for your platform:
+   - Windows: No additional steps needed
+   - macOS: Grant accessibility permissions in System Preferences
+   - Linux: Run `xhost +local:` before starting the application
+
+#### Voice Recognition Not Working
+1. **Missing Vosk model**: Download the model manually from https://alphacephei.com/vosk/models
+2. **Microphone not detected**: Check microphone permissions and settings
+3. **Audio input issues**: Select the correct input device in your OS settings
+
+### Platform-Specific Issues
+
+#### Windows
+- If you encounter DLL loading errors, install the Visual C++ Redistributable
+- For Python import errors, ensure you're using the virtual environment
+- If using an older Windows version, run in compatibility mode
+
+#### Linux
+- For X11 errors: `export DISPLAY=:0` before running
+- For camera issues: `ls -la /dev/video*` to verify camera device
+- For permission errors: `chmod +x *.py` to make scripts executable
+
+#### macOS
+- For accessibility errors: Re-grant permissions in System Preferences
+- For homebrew dependency issues: `brew doctor` to check system status
+- For Python path issues: Use `python3` explicitly instead of `python`
+
+### Getting Help
+
+If you're still experiencing issues:
+1. Check the console/terminal output for specific error messages
+2. Open an issue on our [GitHub Issues page](https://github.com/vigneshbs33/CODEKRAFTERS-Sparsh-Mukthi/issues) with:
+   - Your OS and version
+   - Python version (`python --version`)
+   - Complete error message
+   - Steps to reproduce the issue
   - Microphone: Noise-canceling
   - Storage: 1GB
   - VR Ready GPU (for VR features)
@@ -279,4 +504,5 @@ We welcome contributions! Areas of interest:
 <div align="center">
   Made with ❤️ by CODEKRAFTERS<br>
   © 2025 Sparsh Mukthi. All rights reserved.
-</div>
+</div>#   C O D E K R A F T E R S - S p a r s h - M u k t h i  
+ 
