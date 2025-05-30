@@ -9,11 +9,11 @@
     <p style="margin: 10px 0; font-size: 0.9em; color: #a8a8a8;">
       <i class="fas fa-external-link-alt"></i> Experience the future of touchless interaction
     </p>
-    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;
-      <a href="#-getting-started" style="text-decoration: none;">
+    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+      <a href="#%EF%B8%8F-getting-started" style="text-decoration: none;">
         <img src="https://img.shields.io/badge/📖-Documentation-6c63ff?style=flat-square" alt="Documentation" />
       </a>
-      <a href="#-features" style="text-decoration: none;">
+      <a href="#-adaptive-ai-in-action" style="text-decoration: none;">
         <img src="https://img.shields.io/badge/✨-Features-6c63ff?style=flat-square" alt="Features" />
       </a>
     </div>
@@ -23,9 +23,6 @@
   
   <p><i>Touchless Control System for Education, Healthcare, and VR Gaming</i></p>
   <p><b>Cross-Platform Solution for Windows, macOS, and Linux</b></p>
-  
-  <h3>🚀 <a href="https://sparsh-mukthi.vercel.app/" target="_blank">Try the Live Demo</a> 🚀</h3>
-  <p><i>Experience the power of touchless interaction right now!</i></p>
 </div>
 
 ## 🌟 Overview
@@ -36,66 +33,41 @@ Sparsh Mukthi is an advanced gesture and voice control system that revolutionize
 
 - **Smart Gesture Recognition**
   - Real-time hand tracking with MediaPipe
-  - Adaptive learning for improved accuracy
-  - Custom gesture training
+  - Custom gesture training with AI-assisted learning
   - Multiple gesture support with confidence scoring
+  - Performance optimization based on usage patterns
+  - Visual and audio feedback for better interaction
 
 - **Dual Control Modes**
-  - **Education/Healthcare Mode**: Precise cursor control for professional use
-  - **Gaming Mode**: Optimized for fast-paced interactions
+  - **Education/Healthcare Mode (edu-hcare.py)**:
+    - Precise cursor control for professional environments
+    - Touchless interaction for sterile healthcare settings
+    - Presentation controls for educators
+    - Virtual anatomy manipulation
+    - Accessibility focus for different ability levels
+  
+  - **Gaming/VR Mode (air-control.py)**:
+    - Optimized for fast-paced interactions
+    - Natural VR navigation and controls
+    - 3D space manipulation
+    - Advanced gesture combinations
+    - Smooth motion tracking for immersive experiences
 
-- **Voice Control**
-  - Voice command recognition
-  - Speech-to-text dictation
-  - Custom command mapping
-
-- **Adaptive AI**
-  - Learns from user interactions
-  - Personalizes recognition patterns
-  - Context-aware processing
-  - Continuous performance optimization
-
-### Key Features
-
-- **Adaptive AI Technology**:
-  - **Machine Learning**: Continuously improves gesture recognition accuracy based on user interaction patterns
-  - **Personalized Profiles**: Saves individual user preferences and gesture patterns for personalized experiences
-  - **Context-Aware Processing**: Adjusts sensitivity and response based on usage context (gaming, education, healthcare)
-  - **Feedback Loop**: Learns from corrections to improve future recognition accuracy
-  - **Usage Analytics**: Tracks commonly used commands to optimize performance
-
-- **Education & Healthcare Mode (edu-hcare.py)**:
-  - **Adaptive Learning**: Adjusts gesture sensitivity based on user's movement patterns
-  - **Accessibility Focus**: Automatically adapts to different ability levels and physical capabilities
-  - Touchless interaction for sterile environments
-  - Immersive learning experiences
-  - Virtual anatomy manipulation
-  - Presentation control for educators
-  - COVID-safe interaction protocols
-
-- **VR & Gaming Control (air-contol.py)**:
-  - Natural VR navigation
-  - Precise game control gestures
-  - 3D space manipulation
-  - Advanced gesture combinations
-  - Smooth motion tracking
-
-- **Voice Integration**:
+- **Voice Integration**
   - Dual-mode voice control system:
     - **Command Mode**: Execute keyboard commands by voice
     - **Typing Mode**: Transcribe speech to text at cursor position
   - Natural language commands with customizable variants
   - Voice-gesture hybrid control for hands-free operation
-  - Custom voice command mapping through web interface
-  - Noise-resistant recognition using Vosk speech recognition
+  - Noise-resistant recognition using Vosk
   - Real-time voice feedback and status indicators
 
-- **Custom AI Gestures (Main Application)**:
-  - **Smart Training**: AI-assisted gesture learning that adapts to your natural movements
-  - **Adaptive Recognition**: Automatically adjusts to variations in your gestures over time
-  - **Contextual Mapping**: Maps gestures to actions based on the active application
-  - **Performance Optimization**: Learns from your usage patterns to improve accuracy and response time
-  - **Real-time Feedback**: Provides visual and audio cues for better user interaction
+- **Adaptive AI Technology**
+  - Machine learning for continuous improvement
+  - Personalized user profiles and preferences
+  - Context-aware processing for different applications
+  - Feedback loop that learns from corrections
+  - Usage analytics to optimize command recognition
 
 ## 🤖 Adaptive AI in Action
 
@@ -139,86 +111,7 @@ The application's adaptive AI capabilities enable it to:
 - **Virtual Training**: Immersive simulation control
 - **Fitness Games**: Body movement tracking
 
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.8 or higher
-- Webcam or depth camera
-- Git (for cloning)
-- Windows/Linux/macOS
-- Microphone (for voice control features)
-- VR headset (optional, for VR features)
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/vigneshbs33/CODEKRAFTERS-Sparsh-Mukthi
-cd CODEKRAFTERS-Sparsh-Mukthi
-```
-
-2. Create and activate virtual environment:
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
-
-# Linux/macOS
-python3 -m venv venv
-source venv/bin/activate
-```
-
-3. Install Python dependencies:
-```bash
-# Install all required Python packages
-pip install -r requirements.txt
-```
-
-4. Install system dependencies:
-
-#### Windows
-- Install Microsoft Visual C++ Redistributable (required for some Python packages)
-- Ensure camera and microphone permissions are enabled in Windows Settings → Privacy
-
-#### Linux
-```bash
-# Install system dependencies
-sudo apt-get update
-sudo apt-get install -y \
-    python3-opencv \
-    python3-tk \
-    python3-dev \
-    portaudio19-dev \
-    ffmpeg \
-    libx11-dev \
-    libxtst-dev
-
-# Set up device permissions
-sudo usermod -a -G video $USER
-sudo usermod -a -G audio $USER
-```
-
-#### macOS
-```bash
-# Install Homebrew if not already installed
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install dependencies
-brew install portaudio ffmpeg
-
-# For GUI support (if needed)
-brew install --cask xquartz
-```
-
-5. Download the Vosk speech recognition model:
-```bash
-python Voice-auto/download_vosk_model.py
-```
-
-Or download manually from [Vosk Models](https://alphacephei.com/vosk/models) and extract the `vosk-model-small-en-us-0.15` folder to the `Voice-auto` directory.
-
-## 🛠️ Getting Started
+## 🛠️ Installation
 
 ### Prerequisites
 
@@ -226,16 +119,17 @@ Or download manually from [Vosk Models](https://alphacephei.com/vosk/models) and
 - Webcam with at least 640x480 resolution
 - Microphone (for voice features)
 - Modern web browser (Chrome, Firefox, or Edge recommended)
+- VR headset (optional, for VR features)
 
-### Installation
+### Setup Steps
 
-1. Clone the repository:
+1. **Clone the Repository**:
    ```bash
    git clone https://github.com/vigneshbs33/CODEKRAFTERS-Sparsh-Mukthi
    cd CODEKRAFTERS-Sparsh-Mukthi
    ```
 
-2. Create and activate a virtual environment:
+2. **Create and Activate Virtual Environment**:
    ```bash
    # Windows
    python -m venv venv
@@ -246,19 +140,59 @@ Or download manually from [Vosk Models](https://alphacephei.com/vosk/models) and
    source venv/bin/activate
    ```
 
-3. Install Python dependencies:
+3. **Install Python Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Download the Vosk speech recognition model:
+4. **Install System Dependencies**:
+
+   #### Windows
+   - Install Microsoft Visual C++ Redistributable (required for some Python packages)
+   - Ensure camera and microphone permissions are enabled in Windows Settings → Privacy
+
+   #### Linux
+   ```bash
+   # Install system dependencies
+   sudo apt-get update
+   sudo apt-get install -y \
+       python3-opencv \
+       python3-tk \
+       python3-dev \
+       portaudio19-dev \
+       ffmpeg \
+       libx11-dev \
+       libxtst-dev
+
+   # Set up device permissions
+   sudo usermod -a -G video $USER
+   sudo usermod -a -G audio $USER
+   ```
+
+   #### macOS
+   ```bash
+   # Install Homebrew if not already installed
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+   # Install dependencies
+   brew install portaudio ffmpeg
+
+   # For GUI support (if needed)
+   brew install --cask xquartz
+   ```
+
+5. **Download the Vosk Speech Recognition Model**:
    ```bash
    python Voice-auto/download_vosk_model.py
    ```
 
-### Starting the Application
+   Or download manually from [Vosk Models](https://alphacephei.com/vosk/models) and extract the `vosk-model-small-en-us-0.15` folder to the `Voice-auto` directory.
 
-1. Launch the web interface:
+## 🚀 Getting Started
+
+### Running the Application
+
+1. After installation, launch the web interface:
    ```bash
    python app.py
    ```
@@ -269,6 +203,25 @@ Or download manually from [Vosk Models](https://alphacephei.com/vosk/models) and
    ```
 
 3. Grant camera and microphone permissions when prompted
+
+### Using the Interface
+
+The web interface provides access to all features through a modern, intuitive UI:
+
+- **Navigation Panel**: Access different features using the cyberpunk-styled sidebar
+- **Controller Buttons**: Start and stop various modes with one click
+- **Status Indicators**: Real-time feedback on system status and active features
+- **Gesture Training**: Custom gesture teaching interface with visual feedback
+
+### API Endpoints
+
+The application provides RESTful API endpoints for controller management:
+
+- `/start_mouse_controller`: Starts the Education/Healthcare controller (supports both GET/POST)
+- `/start_air_controller`: Starts the Gaming/VR controller (supports both GET/POST)
+- `/stop_process`: Safely terminates a running controller
+- `/get_gestures`: Retrieves available gestures and their mappings
+- `/update_mapping`: Updates key mappings for gestures
 
 ## 🎮 Using Sparsh Mukthi
 
