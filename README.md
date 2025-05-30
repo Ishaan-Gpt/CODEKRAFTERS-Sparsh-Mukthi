@@ -16,7 +16,7 @@
   <a href="https://sparsh-mukthi.vercel.app/" target="_blank" style="text-decoration: none; color: #007bff; font-weight: bold;">
   🚀 Check out the Live Demo!
 </a>
-
+<br>
   <p><b>Cross-Platform Solution for Windows, macOS, and Linux</b></p>
 </div>
 
